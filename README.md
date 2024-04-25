@@ -247,7 +247,80 @@ Isso mostrará o status atual do seu repositório e indicará se o push foi bem-
 
 Após seguir esses passos, sua nova branch local será enviada para o repositório remoto pela primeira vez e estará pronta para colaboração com outros membros do projeto.
 
+## Principais comandos git adicionais
 
+Além dos comandos básicos do Git, existem vários outros comandos úteis que podem ajudá-lo a gerenciar seu repositório de forma eficaz. Abaixo estão alguns dos principais comandos adicionais do Git:
 
-   
-   
+1. **`git remote -v`:**
+   Este comando exibe os URLs das remotes associadas ao seu repositório Git, juntamente com seus respectivos nomes. Isso é útil para verificar para onde os seus comandos `git fetch` e `git push` estão direcionados. Aqui está como usar o comando:
+
+     ```
+   git remote -v
+     ```
+     
+Isso mostrará os URLs das remotes (geralmente 'origin' e outras, se configuradas) e seus tipos (fetch e push).
+
+2. **`git branch`:**
+   Este comando lista todas as branches presentes no seu repositório local. Se usado sem argumentos adicionais, ele lista apenas as branches locais. Aqui está como usá-lo:
+
+     ```
+   git branch
+     ```
+
+Isso mostrará uma lista das suas branches locais, indicando a branch atual com um asterisco (*).
+
+3. **`git checkout`:**
+   Este comando é usado para alternar entre branches ou restaurar arquivos do diretório de trabalho para o seu estado no commit mais recente. Aqui estão algumas formas comuns de usá-lo:
+
+- Para alternar para outra branch:
+
+     ```
+   git checkout nome_da_branch
+     ```
+
+- Para criar uma nova branch e alternar para ela ao mesmo tempo:
+
+     ```
+   git checkout -b nova_branch
+     ```
+
+- Para desfazer as alterações não commitadas em um arquivo:
+  
+     ```
+   git checkout -- nome_do_arquivo
+     ```
+
+4. **`git merge`:**
+Este comando é usado para mesclar alterações de uma branch para outra. Por exemplo, para mesclar as alterações da branch `feature` na branch `main`, você faria o seguinte:
+
+     ```
+   git checkout main
+   git merge feature
+     ```
+
+5. **`git log`:**
+   Este comando exibe o histórico de commits do repositório. Ele mostra informações como hash do commit, autor, data e mensagem de commit. Aqui está como usá-lo:
+
+     ```
+   git log
+     ```
+
+Isso mostrará o histórico de commits, começando do commit mais recente.
+
+Esses são alguns dos principais comandos adicionais do Git que podem ser úteis para gerenciar e trabalhar com seu repositório de forma eficaz.
+
+### Diferença entre Git Rebase e Git Merge
+
+Tanto o `git rebase` quanto o `git merge` são utilizados para integrar alterações de uma branch para outra, mas eles têm abordagens diferentes para isso, resultando em diferentes históricos de commit. Aqui está a diferença entre eles:
+
+- **Git merge:**
+   - O comando `git merge` integra as alterações de uma branch para outra preservando o histórico de commits original de ambas as branches.
+   - Quando você mescla uma branch em outra usando `git merge`, o Git cria um novo commit de merge que possui duas linhas de desenvolvimento separadas (uma para cada branch), mostrando claramente o ponto em que as duas branches foram mescladas.
+   - Isso resulta em um histórico de commit mais explícito, mostrando todas as etapas de desenvolvimento de cada branch.
+
+- **Git rebase:**
+   - O comando `git rebase` reescreve o histórico de commits da branch que está sendo rebased, movendo todos os commits da branch atual para o ponto de ramificação da branch em que você está rebasing.
+   - Isso resulta em um histórico de commit mais linear e limpo, pois elimina os commits de merge adicionais que são criados pelo `git merge`.
+   - No entanto, o `git rebase` pode reescrever o histórico de commit compartilhado, o que pode causar problemas se você já compartilhou a branch com outros colaboradores ou se já tiver feito push dos commits para o repositório remoto.
+
+Assim sendo, o `git merge` é útil para preservar a linha do tempo do desenvolvimento e mostrar explicitamente os pontos de integração de alterações entre as branches, enquanto o `git rebase` é útil para manter um histórico de commit mais linear e limpo, mas pode causar problemas ao reescrever o histórico de commit compartilhado.
