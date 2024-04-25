@@ -213,3 +213,41 @@ Se você não precisa mais dos stashes após aplicar suas alterações, pode rem
 Isso removerá o stash selecionado da lista de stashes.
 
 Após seguir esses passos, suas alterações salvas no git stash serão recuperadas e aplicadas ao seu diretório de trabalho, permitindo que você continue trabalhando com elas como necessário.
+
+## Subir uma nova branch local para a branch remota
+
+Se você criou uma nova branch local e deseja subi-la para o repositório remoto pela primeira vez, mas a branch correspondente ainda não foi criada no projeto remoto, você pode fazer isso facilmente utilizando o comando `git push` com a opção `-u` (ou `--set-upstream`). Aqui está como você pode realizar esse processo:
+
+1. **Verificar as branches locais e remotas:**
+   Antes de subir sua nova branch local, verifique quais branches locais e remotas existem atualmente no seu repositório. Use o comando `git branch -a` para listar todas as branches locais e remotas:
+
+   ```
+   git branch -a
+   ```
+
+Isso mostrará todas as branches presentes no seu repositório, tanto locais quanto remotas.
+
+2. **Subir a nova branch local:**
+Utilize o comando `git push` seguido pelo nome da nova branch local e o nome da branch remota para subi-la pela primeira vez. Como a branch remota correspondente ainda não foi criada, você precisará usar a opção `-u` (ou `--set-upstream`) para configurar a branch remota de acompanhamento. Por exemplo, se você deseja subir sua nova branch local chamada `nova_branch` para o repositório remoto e nomeá-la como `nova_branch` remotamente, execute o seguinte comando:
+
+   ```
+   git push -u origin nova_branch
+   ```
+   
+Isso criará a branch `nova_branch` no repositório remoto e a associará à sua branch local `nova_branch`.
+
+3. **Verificar o status do push:**
+Após executar o comando `git push`, verifique o status da operação para garantir que a branch tenha sido enviada corretamente para o repositório remoto. Execute o seguinte comando:
+
+   ```
+   git status
+   ```
+
+Isso mostrará o status atual do seu repositório e indicará se o push foi bem-sucedido.
+
+Após seguir esses passos, sua nova branch local será enviada para o repositório remoto pela primeira vez e estará pronta para colaboração com outros membros do projeto.
+
+
+
+   
+   
